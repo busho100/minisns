@@ -75,7 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "MiniSNS.wsgi.application"
 
-LOGIN_REDIRECT_URL = '/' #snsテンプレート完成後、入力必要
+LOGIN_REDIRECT_URL = '/sns/' #snsテンプレート完成後、入力必要
 
 
 # Database

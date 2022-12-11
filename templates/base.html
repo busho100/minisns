@@ -1,63 +1,58 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+</head>
+<body class="container">
+    <nav class="navbar navbar-expand navbar-light bg-light">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">top</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'post' %}">post</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'groups' %}">group</a>
+        </li>
+    </ul>
 
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <meta name='viewport' content='width=device-width, initiai-scake=1,shrink-to-fit=no'>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-       <style>body{padding-top:80px;}</style> 
-       <title>アセスメント表</title>
-    </head>
-    
-        
-         
-        <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top  ">
-            {% comment %} <a class="navbar-brand" href="{% url "hana_cm:index" %}">基本情報</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="{% url "hana_cm:attributes" %}">フェイスシート表</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="{% url "hana_cm:assessment" %}">アセスメント表</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> 
-                            
-            
-
-          
-            
-            </div> {% endcomment %}
-            <div>
-            <ul class='navbar-nav'>
-              {% if user.is_authenticated %}
-                    <li class='nav-time'>
-                        <span class='navbar-text'>{{ user }} - </span></li>
-                             
-                        <li><a href='{% url "logout" %}' class='logout nav-link'>ログアウト</a></li>
-                        <li><a href='{% url "accounts:signup" %}' class='signup nav-link'> 登録 </a></li>
-                    
-              {% else %}
-                  <li><a href='{%url "login"%}' class='login nav-link'>ログイン</a>
-                </li>
-              {% endif %}
-              </ul>
-            </div>
-
+    <div>
+      <ul class='navbar-nav'>
+        {% if user.is_authenticated %}
+              <li class='nav-time'>
+                  <span class='navbar-text'>{{ user }} - </span></li>
+                       
+                  <li><a href='{% url "logout" %}' class='logout nav-link'>ログアウト</a></li>
                   
-          </nav>
-
-            
-        
-                
-        
-        <div class='container'>
-            {% block content %}  
-            {% endblock %}
-        </div>
+              
+        {% else %}
+            <li><a href='{%url "login"%}' class='login nav-link'>ログイン</a></li>
+            <li><a href='{% url "accounts:signup" %}' class='signup nav-link'> 登録 </a></li>
+          
+        {% endif %}
+        </ul>
+      </div>
+    {% comment %}  <span>logined: <span class="h6">"{{login_user}}"</span></span>{% endcomment %}
     </nav>
-    </body>
+
+    <div>{% block header %}
+        {% endblock %}</div>
+    <div class="content">{% block content %}
+        {% endblock %}</div>
+
+    <hr>
+    {% comment %} <div class="my-3">
+        <span class="font-weight-bold">
+            <a href="/admin/logout?next=/sns/">
+                [ logout ]</a></span> {% endcomment %}
+        <span class="float-right">copyright 2020 
+            SYODA-Tuyano.</span>
+    </div>
+</body>
 </html>
