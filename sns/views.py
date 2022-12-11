@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
@@ -11,7 +12,7 @@ from .forms import GroupCheckForm,GroupSelectForm,\
     FriendsForm,CreateGroupForm,PostForm
 
 # indexのビュー関数
-#@login_required(login_url='../templates/registratuon/login/')
+#@login_required(login_url='../templates/registration/login/')
 def index(request, page=1):
     # publicのuserを取得
     (public_user, public_group) = get_public()
@@ -50,7 +51,7 @@ def index(request, page=1):
     }
     return render(request, 'sns/index.html', params)
 
-#@login_required(login_url='../templates/registratuon/login/')
+@login_required(login_url='/templates/registration/login/')
 def groups(request):
     # 自分が登録したFriendを取得
     friends = Friend.objects.filter(owner=request.user)

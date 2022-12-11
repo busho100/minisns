@@ -27,6 +27,10 @@
         {% if user.is_authenticated %}
               <li class='nav-time'>
                   <span class='navbar-text'>{{ user }} - </span></li>
+              <li class='nav-time'>    
+                  <span class='navbar-text'>{{ user.last_name }}　</span></li>
+              <li class='nav-time'>    
+                  <span class='navbar-text'>{{ user.first_name }}  </span></li>    
                        
                   <li><a href='{% url "logout" %}' class='logout nav-link'>ログアウト</a></li>
                   

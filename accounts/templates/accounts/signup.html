@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-<h1>登録</h1>
+<h1 class="display-4 text-primary">登録</h1>
 <section class='common-form'>
     <form method='post'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type='submit'>登録する</button>
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">登録する</button>
     </form>
 </section>
 {% endblock %}
