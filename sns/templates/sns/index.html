@@ -52,7 +52,7 @@ function sendGroupForm(page) {
         share={{item.share_count}} good={{item.good_count}}
     </span>
     <span class="float-right">
-        "{{item.owner}}"(<a href="{% url 'add' %}?name={{item.owner}}">
+        "{{item.owner }},{{item.owner.last_name}}{{item.owner.first_name}}"(<a href="{% url 'add' %}?name={{item.owner}}?name={item.owner.first_name}">
             add friend</a>)
         <a href="{% url 'share' item.id %}">
             <button class="py-0">share</button></a>
