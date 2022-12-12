@@ -44,6 +44,8 @@ def index(request, page=1):
         messages = get_your_group_message(request.user, glist, page)
 
     # 共通処理
+    
+    
     params = {
         'login_user':request.user,
         'contents':messages,
@@ -51,7 +53,7 @@ def index(request, page=1):
     }
     return render(request, 'sns/index.html', params)
 
-@login_required(login_url='/templates/registration/login/')
+#@login_required(login_url='/templates/registration/login/')
 def groups(request):
     # 自分が登録したFriendを取得
     friends = Friend.objects.filter(owner=request.user)
